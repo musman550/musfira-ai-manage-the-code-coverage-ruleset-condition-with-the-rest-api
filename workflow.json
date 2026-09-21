@@ -1,0 +1,32 @@
+{
+  "name": "Musfira AI - Manage the code coverage ruleset condition with the REST API",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "manual-trigger",
+      "name": "Manual Trigger",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [240, 300]
+    },
+    {
+      "parameters": {
+        "url": "http://localhost:11434/api/generate",
+        "method": "POST",
+        "jsonParameters": true,
+        "options": {},
+        "bodyParametersJson": "{\"model\": \"llama3\", \"prompt\": \"Summarize: Manage the code coverage ruleset condition with the REST API\", \"stream\": false}"
+      },
+      "id": "ollama-call",
+      "name": "Query Ollama",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [460, 300]
+    }
+  ],
+  "connections": {
+    "Manual Trigger": {
+      "main": [[{"node": "Query Ollama", "type": "main", "index": 0}]]
+    }
+  }
+}
